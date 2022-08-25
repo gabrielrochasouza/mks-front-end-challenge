@@ -20,7 +20,7 @@ const Card = ({ product }: ICard) => {
       </div>
 
       <p>{product.description}</p>
-
+      <span className="see-more">Ver Mais...</span>
       <button>
         <ShoppingBagIcon/>
         <span>COMPRAR</span>

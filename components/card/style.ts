@@ -77,17 +77,23 @@ export const CardContainer = styled.div`
         color: #2C2C2C;
         margin: 14px 0 0;
     }
-    p{
+    p, .see-more{
         padding: 0px 12px 0px 14px  ;
         font-weight: 300;
         font-size: 10px;
         line-height: 12px;
         width: 100%;
 
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        position: relative;
+
+    }
+    .see-more{
+        cursor: pointer;
+        color:var(--blue) ;
     }
 
 `

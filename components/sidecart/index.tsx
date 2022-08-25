@@ -1,3 +1,4 @@
+import { CartList } from "../cartList";
 import { SideCartContainer } from "./style"
 
 interface ISideCart{
@@ -17,9 +18,9 @@ const SideCart = ({open, openClose}:ISideCart)=>{
                     x
                 </span>
             </header>
-            <ul>
+            
+                <CartList/>
 
-            </ul>
             <section>
                 <span>Total:</span>
                 <span>R$ 44,00</span>

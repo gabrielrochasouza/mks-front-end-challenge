@@ -5,6 +5,7 @@ export const SideCartContainer = styled.aside`
     color: var(--white);
     position: fixed;
     right: ${(props:{open:boolean})=>props.open ? "0" : "-100%"};
+    display: ${(props:{open:boolean})=>props.open ? "flex" : "none"};
     top: 0;
     min-height:100vh ;
     height: 100%;
@@ -14,6 +15,8 @@ export const SideCartContainer = styled.aside`
     box-shadow: -5px 0px 6px rgba(0, 0, 0, 0.13);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    z-index: 31;
     .sidecart-header__closebtn{
         width: 38px;
         height: 38px;
