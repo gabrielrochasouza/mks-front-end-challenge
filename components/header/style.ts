@@ -9,7 +9,7 @@ export const HeaderComponent = styled.header`
         justify-content: space-between;
         display: flex;
         align-items: center;
-        max-width: 1600px;
+        max-width: 1110px;
         margin: 0 auto;
         width: 100%;
     }

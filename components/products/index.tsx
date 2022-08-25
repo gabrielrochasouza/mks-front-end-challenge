@@ -22,7 +22,7 @@ const Products = () => {
       {products.length ? (
         products.map((product) => <Card key={product.id} product={product} />)
       ) : (
-        <ProductsSkeleton />
+        <ProductsSkeleton/>
       )}
     </ProductsContainer>
   );

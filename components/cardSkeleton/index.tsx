@@ -6,7 +6,6 @@ const CardSkeleton = () => {
   return (
     <CardContainer>
       <Skeleton height={"138px"} />
-
       <p>
         <Skeleton
           height={"20px"}
@@ -19,7 +18,6 @@ const CardSkeleton = () => {
           style={{ display: "inline-block" }}
         />
       </p>
-
       <p>
         <Skeleton height={"10px"} count={23} />
       </p>

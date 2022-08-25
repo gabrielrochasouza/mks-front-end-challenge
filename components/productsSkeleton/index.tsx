@@ -1,12 +1,15 @@
-import { ProductsSkeletonContainer } from "./style"
 import CardSkeleton from "../cardSkeleton"
 
-const ProductsSkeleton = ()=>{
-    const skeletonList = Array(8).fill({})
+interface IProductsSkeleton{
+    listLength?:number
+}
+
+const ProductsSkeleton = ({listLength=8}:IProductsSkeleton)=>{
+    const skeletonList = Array(listLength).fill({})
     return(
-        <ProductsSkeletonContainer>
-            {skeletonList.map(e=><CardSkeleton/>)}
-        </ProductsSkeletonContainer>
+        <>
+            {skeletonList.map((e,i)=><CardSkeleton key={i}/>)}
+        </>
     )
 }
 export default ProductsSkeleton

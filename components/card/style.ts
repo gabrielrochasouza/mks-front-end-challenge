@@ -14,7 +14,7 @@ export const CardContainer = styled.div`
     figure{
         width: 100%;
         height: 138px;
-        padding: 18px 0 0;
+        padding: 12px 0 0;
         overflow: hidden;
         cursor: pointer;
         img{
@@ -78,7 +78,7 @@ export const CardContainer = styled.div`
         margin: 14px 0 0;
     }
     p{
-        padding: 5px 12px 12px 14px  ;
+        padding: 0px 12px 0px 14px  ;
         font-weight: 300;
         font-size: 10px;
         line-height: 12px;
