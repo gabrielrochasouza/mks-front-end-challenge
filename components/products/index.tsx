@@ -10,9 +10,7 @@ const Products = () => {
     api
       .get("products?page=1&rows=20&sortBy=id&orderBy=DESC")
       .then((res) => {
-        setTimeout(() => {
-          setProducts(res.data.products);
-        }, 2000);
+        setProducts(res.data.products);
       })
       .catch((err) => console.log(err));
   }, []);
