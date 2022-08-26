@@ -8,28 +8,23 @@ import { useDispatch } from "react-redux";
 import { parseCookies } from "nookies";
 
 export default function Home(props) {
-  const dispatch = useDispatch()
-  props["@Products"] && dispatch(refresh(JSON.parse(props["@Products"])))
-  
-  
+  const dispatch = useDispatch();
+  props["@Products"] && dispatch(refresh(JSON.parse(props["@Products"])));
   return (
     <>
       <Head>
         <title>Loja Tech</title>
       </Head>
-      <Header />
-      <Products />
-      <Footer />
-      <Toaster
-        position="bottom-left"
-        reverseOrder={false}
-      />
+
+      <Header/>
+      <Products/>
+      <Footer/>
+      <Toaster position="bottom-left" reverseOrder={false} />
     </>
   );
 }
 
 export async function getServerSideProps(ctx) {
-  const products = parseCookies(ctx)
-  
-  return { props:products }
+  const products = parseCookies(ctx);
+  return { props: products };
 }

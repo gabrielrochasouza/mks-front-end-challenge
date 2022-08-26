@@ -18,7 +18,7 @@ const CardCard = ({product}:ICart)=>{
                 <figcaption>
                 {product.name} {product.description}
                 </figcaption>
-                <Image width={50} height={52} src={product.photo} alt={product.name}/>
+                <Image draggable={false} width={50} height={52} src={product.photo} alt={product.name}/>
             </figure>
             <span className="card-title">
             {product.brand} {product.name}

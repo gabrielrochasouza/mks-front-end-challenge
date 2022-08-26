@@ -15,24 +15,24 @@ const Card = ({ product }: ICard) => {
 
   return (
     <CardContainer>
-      <figure>
+      <figure data-testid="img-figure">
         <figcaption>{product.name}</figcaption>
-        <Image width={227.5} height={158} src={product.photo} alt={product.name} />
+        <Image draggable={false} width={227.5} height={158} src={product.photo} alt={product.name} />
       </figure>
 
-      <div>
+      <div data-testid="info">
         <h3>{product.brand} {product.name}</h3>
         <span>R${product.price.slice(0, -3)}</span>
       </div>
 
-      <p>{product.description}</p>
+      <p data-testid="desc">{product.description}</p>
       <span className="see-more">Ver Mais...</span>
-      <button onClick={()=>{
-        toast.success(product.brand + product.name +" adicionado ao carrinho!")
+      <button data-testid="add" onClick={()=>{
+        toast.success(product.brand + product.name + " adicionado ao carrinho!")
         dispatch(addProduct(product))
       }}>
         <ShoppingBagIcon/>
-        <span>COMPRAR</span>
+        <span data-testid={`add${product.id}`}>COMPRAR</span>
       </button>
     </CardContainer>
   );

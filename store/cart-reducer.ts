@@ -13,7 +13,7 @@ const initialState: {cartProducts: IProductCart[]} = {
     cartProducts: []
 }
 
-const setProductCookie = (array: any)=>{
+const setProductCookie = (array: IProductCart[])=>{
     setCookie(null, "@Products", JSON.stringify(array),{
         path:"/",
         maxAge: 30 * 24 * 60 * 60,
@@ -50,7 +50,7 @@ export const cartSlice = createSlice({
             if(index!==-1) state.cartProducts.splice(index, 1)
             setProductCookie(state.cartProducts)
         },
-        refresh(state, action){
+        refresh(state, action:{payload:IProductCart[]}){
             state.cartProducts = [...action.payload]
         }
 

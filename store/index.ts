@@ -3,14 +3,14 @@ import { cartSlice } from "./cart-reducer";
 import { createWrapper } from "next-redux-wrapper";
 
 
-const store = ()=> configureStore({
+export const store = configureStore({
     reducer:{
         [cartSlice.name]: cartSlice.reducer
     },
     devTools: true
 })
 
-export type AppStore = ReturnType<typeof store>;
+export type AppStore = typeof store;
 
 export type AppState = ReturnType<AppStore["getState"]>;
 
@@ -20,4 +20,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action
 >;
-export const wrapper = createWrapper<AppStore>(store);
+// export const wrapper = createWrapper<AppStore>(store);

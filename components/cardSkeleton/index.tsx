@@ -4,9 +4,9 @@ import { CardContainer } from "../card/style";
 
 const CardSkeleton = () => {
   return (
-    <CardContainer>
+    <CardContainer >
       <Skeleton height={"140px"} />
-      <p>
+      <p >
         <Skeleton
           height={"20px"}
           width={"50%"}

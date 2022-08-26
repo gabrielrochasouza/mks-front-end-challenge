@@ -15,22 +15,22 @@ const SideCart = ({open, openClose}:ISideCart)=>{
 
     return(
         <SideCartContainer open={open}>
-            <header>
+            <header data-testid='sideCartTitle'>
                 <h2>
                     Carrinho de Compras
                 </h2>
-                <span onClick={openClose} >
+                <span onClick={openClose} data-testid='sideCartClose'>
                     x
                 </span>
             </header>
             
                 <CartList/>
 
-            <section>
+            <section data-testid="sideCartTotal">
                 <span>Total:</span>
                 <span>R${total}</span>
             </section>
-            <div>
+            <div data-testid="sideCartCheckout">
                 <button>
                     Finalizar Compra
                 </button>

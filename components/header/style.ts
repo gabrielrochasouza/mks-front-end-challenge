@@ -5,6 +5,10 @@ export const HeaderComponent = styled.header`
     background-color: var(--blue);
     padding: 0 30px;
     display: flex;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 40;
     >div{
         justify-content: space-between;
         display: flex;

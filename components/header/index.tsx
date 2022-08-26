@@ -15,14 +15,14 @@ const Header = () => {
   return (
     <HeaderComponent>
       <div >
-        <h1 >
+        <h1 data-testid='title'>
           <span >MKS</span>
           <span > Sistemas</span>
         </h1>
 
-        <div onClick={openClose}>
+        <div onClick={openClose} data-testid='icon'>
           <CartIcon/>
-          <span >{totalQuantity}</span>
+          <span data-testid="totalQuantity" >{totalQuantity}</span>
         </div>
       </div>
       <SideCart open={open} openClose={openClose}/>
