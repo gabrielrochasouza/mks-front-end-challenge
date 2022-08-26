@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CartListContainer = styled.ul`
-    padding: 60px 40px 30px 40px;
+    padding: 8px 40px 30px 40px;
     overflow: auto;
     max-height: 400px;
     width: 100%;
