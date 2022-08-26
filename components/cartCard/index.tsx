@@ -1,4 +1,10 @@
+import Image from "next/image"
+import toast from "react-hot-toast"
+import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { IProductCart } from "../../interfaces"
+
+import { selectCartState, removeOneProduct, removeProduct, addProduct } from "../../store/cart-reducer"
 import { CartCardContainer } from "./style"
 
 interface ICart{
@@ -6,25 +12,31 @@ interface ICart{
 }
 
 const CardCard = ({product}:ICart)=>{
-
+    const dispatch = useDispatch()
     return(
         <CartCardContainer>
             <figure>
                 <figcaption>
                 {product.name} {product.description}
                 </figcaption>
-                <img src={product.photo} alt={product.name}/>
+                <Image width={50} height={52} src={product.photo} alt={product.name}/>
             </figure>
             <span className="card-title">
-            {product.name}
+            {product.brand} {product.name}
             </span>
             <div className="qtd-box">
                 <span className="qtd">
                     Qtd:
                     <div className="qtd-controller">
-                        <span className="controller"> - </span>
-                        <span className="qtd-num"> 1 </span>
-                        <span className="controller"> + </span>
+                        <span onClick={()=>{
+                            toast.success(product.brand +product.name +" retirado")
+                            dispatch(removeOneProduct(product))
+                        }} className="controller"> - </span>
+                        <span className="qtd-num"> {product.qtd} </span>
+                        <span onClick={()=>{
+                            toast.success(product.brand +product.name +" adicionado")
+                            dispatch(addProduct(product))
+                        }} className="controller"> + </span>
                     </div>
                 </span>
 
@@ -32,7 +44,7 @@ const CardCard = ({product}:ICart)=>{
             <span className="price">
                 R${product.price}
             </span>
-            <div className="close-btn">
+            <div onClick={()=>dispatch(removeProduct(product))} className="close-btn">
                 X
             </div>
         </CartCardContainer>

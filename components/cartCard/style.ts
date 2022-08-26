@@ -7,7 +7,7 @@ export const CartCardContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 95px;
-  padding: 19px 15px 19px 21px;
+  padding: 14px 15px 14px 12px;
   box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   justify-content: space-between;
@@ -21,6 +21,14 @@ export const CartCardContainer = styled.div`
     color: var(--grey);
     max-width: 113px;
     flex: 1;
+    padding:  0 4px 0 8px ;
+
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+
   }
   .price {
     font-family: "Montserrat";
@@ -50,10 +58,11 @@ export const CartCardContainer = styled.div`
     font-size: 10px;
     text-align: center;
     border-radius: 50%;
-    padding: 4px 0 6px;
+    padding: 3px 0 4px;
   }
   .qtd-box {
     min-width:50px;
+    margin: 0 8px 0 0;
     .qtd {
       color: var(--black);
       font-family: "Montserrat";
@@ -92,6 +101,7 @@ export const CartCardContainer = styled.div`
         display: inline-block;
         transition: 1s all;
         :hover{
+            transform: scale(1.6);
             transition: 1s all;
             color: var(--blue);
             border-radius: 50%;

@@ -3,12 +3,20 @@ import { IProduct } from "../../interfaces/index";
 import ShoppingBagIcon from "../shoppingBag";
 import Image from "next/image";
 
+import { selectCartState, addProduct } from "../../store/cart-reducer"; 
+import {useDispatch, useSelector} from 'react-redux'
+import toast from "react-hot-toast";
 
-interface ICard {
+
+export interface ICard {
   product: IProduct;
 }
 
-const Card = ({ product }: ICard) => {
+const Card = ({ product }: any) => {
+  const dispatch = useDispatch()
+  const cartState = useSelector(selectCartState)
+
+
   return (
     <CardContainer>
       <figure>
@@ -23,7 +31,10 @@ const Card = ({ product }: ICard) => {
 
       <p>{product.description}</p>
       <span className="see-more">Ver Mais...</span>
-      <button>
+      <button onClick={()=>{
+        toast.success(product.brand + product.name +" adicionado ao carrinho!")
+        dispatch(addProduct(product))
+      }}>
         <ShoppingBagIcon/>
         <span>COMPRAR</span>
       </button>

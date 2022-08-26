@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { selectCartState } from "../../store/cart-reducer";
 import { CartList } from "../cartList";
 import { SideCartContainer } from "./style"
 
@@ -7,6 +9,9 @@ interface ISideCart{
 }
 
 const SideCart = ({open, openClose}:ISideCart)=>{
+    const cartState = useSelector(selectCartState)
+
+    const total = cartState.length ? cartState.reduce((acc,elem)=>acc+elem.qtd*Number(elem.price),0).toFixed(2) : "0,00"
 
     return(
         <SideCartContainer open={open}>
@@ -23,7 +28,7 @@ const SideCart = ({open, openClose}:ISideCart)=>{
 
             <section>
                 <span>Total:</span>
-                <span>R$ 44,00</span>
+                <span>R${total}</span>
             </section>
             <div>
                 <button>
