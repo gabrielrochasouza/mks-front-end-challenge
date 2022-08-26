@@ -1,3 +1,29 @@
+# About this Project
+
+This is a simple ecommerce page, where you can add and remove products to cart. The products of this page come from an api, link below:
+
+<a href="https://mks-frontend-challenge-api.herokuapp.com/api-docs/">Link of the api</a>
+
+The deployment of the aplication was made to vercel, link below:
+
+<a href="http://mks-front-end-challenge.vercel.app/">Link of deployment</a>
+
+This is a project made with next js, typescript, styled-components and redux tool kit (for state management), and also some test were made using jest. Besides that, it was used shimmer skeleton for loading. 
+
+The project was made for a technical test for a front end job.
+
+<br>
+
+<img src="./overview.png"/>
+
+<br>
+<br>
+<hr>
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
