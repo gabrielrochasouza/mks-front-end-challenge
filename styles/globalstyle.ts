@@ -22,6 +22,16 @@ export const GlobalStyle = createGlobalStyle`
         border: 0;
         outline: 0;
     }
+    @keyframes scaleUp {
+        from{
+            opacity: 0;
+            transform: scale(0);
+        }
+        to{
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
     :root{
         --blue:#0F52BA;
         --grey:#373737;

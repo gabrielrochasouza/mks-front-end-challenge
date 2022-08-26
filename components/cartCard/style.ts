@@ -12,6 +12,7 @@ export const CartCardContainer = styled.div`
   border-radius: 8px;
   justify-content: space-between;
   position: relative;
+  animation: scaleUp 600ms;
   .card-title {
     font-family: "Montserrat";
     font-style: normal;

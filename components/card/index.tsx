@@ -1,18 +1,14 @@
 import { CardContainer } from "./style";
-import { IProduct } from "../../interfaces/index";
 import ShoppingBagIcon from "../shoppingBag";
 import Image from "next/image";
 
 import { selectCartState, addProduct } from "../../store/cart-reducer"; 
 import {useDispatch, useSelector} from 'react-redux'
 import toast from "react-hot-toast";
+import { ICard } from "../../interfaces/index";
 
 
-export interface ICard {
-  product: IProduct;
-}
-
-const Card = ({ product }: any) => {
+const Card = ({ product }: ICard) => {
   const dispatch = useDispatch()
   const cartState = useSelector(selectCartState)
 

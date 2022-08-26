@@ -1,10 +1,9 @@
 import Image from "next/image"
 import toast from "react-hot-toast"
-import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { IProductCart } from "../../interfaces"
 
-import { selectCartState, removeOneProduct, removeProduct, addProduct } from "../../store/cart-reducer"
+import { removeOneProduct, removeProduct, addProduct } from "../../store/cart-reducer"
 import { CartCardContainer } from "./style"
 
 interface ICart{

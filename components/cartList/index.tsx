@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import ShoppingBagIcon from "../shoppingBag";
 import { CartListContainer } from "./style";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCartState, addProduct } from "../../store/cart-reducer";
+import { useSelector } from "react-redux";
+import { selectCartState } from "../../store/cart-reducer";
 import CardCard from "../cartCard";
 
 export const CartList = () => {
