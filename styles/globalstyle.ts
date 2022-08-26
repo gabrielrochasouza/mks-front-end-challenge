@@ -28,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
         --white:#fff;
         --black:#000;
         --tx-color:#2C2C2C;
-        --bg-pri-color:#E5E5E5;
+        --bg-pri-color:#f9f9f9;
         --bg-sec-color:#EEEEEE;
     }
 `;

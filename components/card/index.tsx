@@ -1,6 +1,8 @@
 import { CardContainer } from "./style";
 import { IProduct } from "../../interfaces/index";
 import ShoppingBagIcon from "../shoppingBag";
+import Image from "next/image";
+
 
 interface ICard {
   product: IProduct;
@@ -11,7 +13,7 @@ const Card = ({ product }: ICard) => {
     <CardContainer>
       <figure>
         <figcaption>{product.name}</figcaption>
-        <img src={product.photo} alt={product.name} />
+        <Image width={227.5} height={158} src={product.photo} alt={product.name} />
       </figure>
 
       <div>

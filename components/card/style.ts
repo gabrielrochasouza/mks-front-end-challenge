@@ -13,8 +13,8 @@ export const CardContainer = styled.div`
     justify-content: space-between;
     figure{
         width: 100%;
-        height: 138px;
-        padding: 12px 0 0;
+        height: 158px;
+        padding: 0px 0 0;
         overflow: hidden;
         cursor: pointer;
         img{
@@ -76,6 +76,10 @@ export const CardContainer = styled.div`
         line-height: 19px;
         color: #2C2C2C;
         margin: 14px 0 0;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
     }
     p, .see-more{
         padding: 0px 12px 0px 14px  ;
