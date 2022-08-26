@@ -9,7 +9,7 @@ export const SideCartContainer = styled.aside`
     top: 0;
     min-height:100vh ;
     height: 100%;
-    max-width: 486px;
+    max-width: 416px;
     width: 100%;
     transition: 1000ms;
     box-shadow: -5px 0px 6px rgba(0, 0, 0, 0.13);
