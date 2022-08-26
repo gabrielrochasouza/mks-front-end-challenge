@@ -11,6 +11,12 @@ export const CardContainer = styled.div`
     flex-direction: column;
     overflow: hidden;
     justify-content: space-between;
+    @media (max-width: 425px) {
+        width: 80%;
+        figure{
+            text-align: center;
+        }
+    }
     figure{
         width: 100%;
         height: 158px;
