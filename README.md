@@ -10,6 +10,11 @@ The deployment of the aplication was made to vercel, link below:
 
 This is a project made with next js, typescript, styled-components and redux tool kit (for state management), and also some test were made using jest. Besides that, it was used shimmer skeleton for loading. 
 
+To run the tests use the command below:
+```
+yarn run test
+```
+
 The project was made for a technical test for a front end job.
 
 <br>
