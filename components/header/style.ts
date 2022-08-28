@@ -9,11 +9,12 @@ export const HeaderComponent = styled.header`
     top: 0;
     left: 0;
     z-index: 40;
+    
     >div{
         justify-content: space-between;
         display: flex;
         align-items: center;
-        max-width: 1110px;
+        max-width: 1210px;
         margin: 0 auto;
         width: 100%;
     }
@@ -31,6 +32,14 @@ export const HeaderComponent = styled.header`
             font-weight: 300;
             font-size: 20px;
             line-height: 19px;
+        }
+        @media (max-width:350px) {
+            span:nth-child(1){
+                font-size: 34px;
+            }
+            span:nth-child(2){
+                font-size: 17px;
+            }
         }
     }
     >div >div{
