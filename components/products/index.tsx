@@ -11,7 +11,11 @@ const Products = () => {
     api
       .get("products?page=1&rows=20&sortBy=id&orderBy=DESC")
       .then((res) => {
-        act(()=>setProducts(res.data.products))
+        if(process.env.TEST){
+          act(()=>setProducts(res.data.products)) 
+        }else{
+          setProducts(res.data.products)
+        }
       })
       .catch((err) => console.log(err));
   }, []);
