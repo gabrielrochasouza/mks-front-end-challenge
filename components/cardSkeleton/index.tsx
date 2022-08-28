@@ -19,9 +19,8 @@ const CardSkeleton = () => {
         />
       </p>
       <p>
-        <Skeleton height={"10px"} count={23} />
+        <Skeleton height={"10px"} count={3} />
       </p>
-
       <Skeleton height={"36px"} />
     </CardContainer>
   );

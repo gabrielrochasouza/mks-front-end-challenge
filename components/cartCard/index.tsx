@@ -13,7 +13,7 @@ interface ICart{
 const CardCard = ({product}:ICart)=>{
     const dispatch = useDispatch()
     return(
-        <CartCardContainer>
+        <CartCardContainer data-testid="cart-card">
             <figure>
                 <figcaption>
                 {product.name} {product.description}
@@ -43,7 +43,7 @@ const CardCard = ({product}:ICart)=>{
             <span className="price">
                 R${product.price}
             </span>
-            <div onClick={()=>dispatch(removeProduct(product))} className="close-btn">
+            <div data-testid="close-btn" onClick={()=>dispatch(removeProduct(product))} className="close-btn">
                 X
             </div>
         </CartCardContainer>

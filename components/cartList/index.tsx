@@ -8,9 +8,11 @@ export const CartList = () => {
   const cartState = useSelector(selectCartState);
 
   return (
-    <CartListContainer>
+    <CartListContainer data-testid="cart-list">
       {cartState.length ? (
-        cartState.map(product=> <CardCard key={product.id} product={product}/>)
+        cartState.map((product) => (
+          <CardCard key={product.id} product={product} />
+        ))
       ) : (
         <div className="empty">
           <ShoppingBagIcon />

@@ -3,6 +3,7 @@ import { IProductCart } from "../interfaces";
 import { HYDRATE } from "next-redux-wrapper";
 import { AppState } from ".";
 import { setCookie } from "nookies";
+import { act } from "@testing-library/react";
 
 export interface CartState{
     cartState: IProductCart[]; 

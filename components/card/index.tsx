@@ -1,37 +1,45 @@
 import { CardContainer } from "./style";
 import ShoppingBagIcon from "../shoppingBag";
 import Image from "next/image";
-
-import { selectCartState, addProduct } from "../../store/cart-reducer"; 
-import {useDispatch, useSelector} from 'react-redux'
+import { addProduct } from "../../store/cart-reducer";
+import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { ICard } from "../../interfaces/index";
-
+import { act } from "@testing-library/react";
 
 const Card = ({ product }: ICard) => {
-  const dispatch = useDispatch()
-  const cartState = useSelector(selectCartState)
-
+  const dispatch = useDispatch();
 
   return (
     <CardContainer>
-      <figure data-testid="img-figure">
+      <figure>
         <figcaption>{product.name}</figcaption>
-        <Image draggable={false} width={227.5} height={158} src={product.photo} alt={product.name} />
+        <Image
+          draggable={false}
+          width={227.5}
+          height={158}
+          src={product.photo}
+          alt={product.name}
+        />
       </figure>
-
       <div data-testid="info">
-        <h3>{product.brand} {product.name}</h3>
+        <h3>
+          {product.brand} {product.name}
+        </h3>
         <span>R${product.price.slice(0, -3)}</span>
       </div>
-
       <p data-testid="desc">{product.description}</p>
       <span className="see-more">Ver Mais...</span>
-      <button data-testid="add" onClick={()=>{
-        toast.success(product.brand + product.name + " adicionado ao carrinho!")
-        dispatch(addProduct(product))
-      }}>
-        <ShoppingBagIcon/>
+      <button
+        data-testid="add"
+        onClick={() => {
+          toast.success(
+            product.brand + product.name + " adicionado ao carrinho!"
+          );
+          dispatch(addProduct(product));
+        }}
+      >
+        <ShoppingBagIcon />
         <span data-testid={`add${product.id}`}>COMPRAR</span>
       </button>
     </CardContainer>

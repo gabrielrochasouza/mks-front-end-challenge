@@ -22,6 +22,18 @@ export const GlobalStyle = createGlobalStyle`
         border: 0;
         outline: 0;
     }
+    ::-webkit-scrollbar{
+        width: 5px;
+        background-color: #fff;
+    }
+    ::-webkit-scrollbar-track{
+        background-color: #000;
+
+    }
+    ::-webkit-scrollbar-thumb{
+        background-color: #fff;
+
+    }
     @keyframes scaleUp {
         from{
             opacity: 0;

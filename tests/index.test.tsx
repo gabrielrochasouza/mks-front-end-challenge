@@ -1,12 +1,13 @@
 import Home from "../pages/index";
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
+import {  render, screen, waitFor } from "@testing-library/react";
 import Header from "../components/header";
 import { Provider } from "react-redux";
 import { store } from "../store";
 import Products from "../components/products";
 import { api } from "../services";
 import Footer from "../components/footer";
+import {act} from '@testing-library/react'
 
 describe("Shop test", () => {
   it("renders Header component", () => {
@@ -31,18 +32,13 @@ describe("Shop test", () => {
     expect(screen.getByTestId("sideCartCheckout")).toBeInTheDocument();
   });
 
-  it("renders Products component", () => {
+  it("renders Skeleton component", () => {
     render(
       <Provider store={store}>
         <Products />
       </Provider>
     );
-    setTimeout(() => {
-      expect(screen.getByTestId("img-figure")).toBeInTheDocument();
-      expect(screen.getByTestId("info")).toBeInTheDocument();
-      expect(screen.getByTestId("desc")).toBeInTheDocument();
-      expect(screen.getByTestId("add")).toBeInTheDocument();
-    }, 2500);
+      expect(screen.getByTestId("skeleton-list")).toBeInTheDocument();
   });
 
   it("renders Footer component", () => {
@@ -54,20 +50,43 @@ describe("Shop test", () => {
     expect(screen.getByTestId("footer")).toBeInTheDocument();
   });
 
-  it("tests product is added", () => {
-    render(
-      <Provider store={store}>
-        <Home />
-      </Provider>
-    );
-    setTimeout(() => {
-      const addButton = screen.getByTestId("add8")
-      addButton.click()
-      const total = screen.getByTestId("totalQuantity")
-      expect(addButton).toBeInTheDocument()
-      expect(total).toBeInTheDocument()
-      expect(total).toBeGreaterThan(0);
-    }, 2000);
+
+  it("tests product component", async() => {
+    await act(async()=>{
+      render(
+        <Provider store={store}>
+          <Products />
+        </Provider>
+      )
+    })
+    const list = await waitFor(()=>screen.getByTestId('list-products'))
+    expect(screen.getByTestId("add1")).toBeInTheDocument();
+    expect(screen.getByTestId("add2")).toBeInTheDocument();
+    expect(screen.getByTestId("add3")).toBeInTheDocument();
+    expect(screen.getByTestId("add4")).toBeInTheDocument();
+    expect(screen.getByTestId("add5")).toBeInTheDocument();
+    expect(screen.getByTestId("add6")).toBeInTheDocument();
+    expect(screen.getByTestId("add7")).toBeInTheDocument();
+    expect(screen.getByTestId("add8")).toBeInTheDocument();
+    expect(screen.getByTestId("list-products")).toBeInTheDocument();
+  });
+
+
+  it("tests product is added", async() => {
+    await act(async()=>{
+      render(
+        <Provider store={store}>
+          <Header/>
+          <Products />
+        </Provider>
+      )
+    })
+    const list = await waitFor(()=>screen.getByTestId('list-products'))
+    const addButton = screen.getByTestId("add1")
+    expect(addButton).toBeInTheDocument();
+    addButton.click()
+    const cartList = await waitFor(()=>{screen.getByTestId('cart-card')})
+    expect(screen.getByTestId("totalQuantity")).toHaveTextContent('1');
   });
 
 
