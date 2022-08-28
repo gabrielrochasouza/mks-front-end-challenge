@@ -28,7 +28,7 @@ const SideCart = ({open, openClose}:ISideCart)=>{
 
             <section data-testid="sideCartTotal">
                 <span>Total:</span>
-                <span>R${total}</span>
+                <span data-testid="totalPrice">R${total}</span>
             </section>
             <div data-testid="sideCartCheckout">
                 <button>

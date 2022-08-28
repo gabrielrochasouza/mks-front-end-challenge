@@ -13,7 +13,7 @@ interface ICart{
 const CardCard = ({product}:ICart)=>{
     const dispatch = useDispatch()
     return(
-        <CartCardContainer data-testid="cart-card">
+        <CartCardContainer data-testid={"cart-card"+product.id}>
             <figure>
                 <figcaption>
                 {product.name} {product.description}
@@ -30,12 +30,12 @@ const CardCard = ({product}:ICart)=>{
                         <span onClick={()=>{
                             toast.success(product.brand +product.name +" retirado")
                             dispatch(removeOneProduct(product))
-                        }} className="controller"> - </span>
+                        }} className="controller" data-testid={"cart-card-remove-one"+product.id}> - </span>
                         <span className="qtd-num"> {product.qtd} </span>
                         <span onClick={()=>{
                             toast.success(product.brand +product.name +" adicionado")
                             dispatch(addProduct(product))
-                        }} className="controller"> + </span>
+                        }} className="controller" data-testid={"cart-card-add-one"+product.id}> + </span>
                     </div>
                 </span>
 
@@ -43,7 +43,7 @@ const CardCard = ({product}:ICart)=>{
             <span className="price">
                 R${product.price}
             </span>
-            <div data-testid="close-btn" onClick={()=>dispatch(removeProduct(product))} className="close-btn">
+            <div data-testid={"cart-card-close"+product.id}  onClick={()=>dispatch(removeProduct(product))} className="close-btn">
                 X
             </div>
         </CartCardContainer>

@@ -59,7 +59,7 @@ describe("Shop test", () => {
         </Provider>
       )
     })
-    const list = await waitFor(()=>screen.getByTestId('list-products'))
+    await waitFor(()=>screen.getByTestId('list-products'))
     expect(screen.getByTestId("add1")).toBeInTheDocument();
     expect(screen.getByTestId("add2")).toBeInTheDocument();
     expect(screen.getByTestId("add3")).toBeInTheDocument();
@@ -72,7 +72,7 @@ describe("Shop test", () => {
   });
 
 
-  it("tests product is added", async() => {
+  it("tests add and remove products", async() => {
     await act(async()=>{
       render(
         <Provider store={store}>
@@ -82,11 +82,25 @@ describe("Shop test", () => {
       )
     })
     const list = await waitFor(()=>screen.getByTestId('list-products'))
-    const addButton = screen.getByTestId("add1")
-    expect(addButton).toBeInTheDocument();
-    addButton.click()
-    const cartList = await waitFor(()=>{screen.getByTestId('cart-card')})
-    expect(screen.getByTestId("totalQuantity")).toHaveTextContent('1');
+    const addButton1 = screen.getByTestId("add1")
+    const addButton2 = screen.getByTestId("add2")
+    expect(addButton1).toBeInTheDocument();
+    expect(addButton2).toBeInTheDocument();
+    addButton1.click()
+    addButton1.click()
+    addButton2.click()
+    await waitFor(()=>{screen.getByTestId('cart-card1')})
+    await waitFor(()=>{screen.getByTestId('cart-card2')})
+    expect(screen.getByTestId("totalQuantity")).toHaveTextContent('3');
+    expect(screen.getByTestId("totalPrice")).toHaveTextContent('R$11200.00');
+    const cartCardRemove = await waitFor(()=>{screen.getByTestId('cart-card1')})
+    screen.getByTestId('cart-card-remove-one2').click()
+    await waitFor(()=>{screen.getByTestId('cart-card2')})
+    expect(screen.getByTestId("totalQuantity")).toHaveTextContent('2');
+    screen.getByTestId('cart-card-close1').click()
+    await waitFor(()=>{screen.getByTestId('cart-card1')})
+    expect(screen.getByTestId("totalQuantity")).toHaveTextContent('0');
+    expect(screen.getByTestId("totalPrice")).toHaveTextContent('R$0,00');
   });
 
 
