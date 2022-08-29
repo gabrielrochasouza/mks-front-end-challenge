@@ -7,6 +7,8 @@ export const CartCardContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 95px;
+  min-height: 95px;
+  
   padding: 14px 15px 14px 12px;
   box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
