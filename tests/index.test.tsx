@@ -59,16 +59,19 @@ describe("Shop test", () => {
         </Provider>
       )
     })
-    await waitFor(()=>screen.getByTestId('list-products'))
-    expect(screen.getByTestId("add1")).toBeInTheDocument();
-    expect(screen.getByTestId("add2")).toBeInTheDocument();
-    expect(screen.getByTestId("add3")).toBeInTheDocument();
-    expect(screen.getByTestId("add4")).toBeInTheDocument();
-    expect(screen.getByTestId("add5")).toBeInTheDocument();
-    expect(screen.getByTestId("add6")).toBeInTheDocument();
-    expect(screen.getByTestId("add7")).toBeInTheDocument();
-    expect(screen.getByTestId("add8")).toBeInTheDocument();
-    expect(screen.getByTestId("list-products")).toBeInTheDocument();
+    const promise = api.get("products?page=1&rows=20&sortBy=id&orderBy=DESC")
+    return promise.then(async res=>{
+      const add1 = await screen.findByTestId("add1")
+      const add2 = await screen.findByTestId("add2")
+      const add3 = await screen.findByTestId("add3")
+      const add4 = await screen.findByTestId("add4")
+      const listProducts = await screen.findByTestId("list-products")
+      expect(add1).toBeInTheDocument();
+      expect(add2).toBeInTheDocument();
+      expect(add3).toBeInTheDocument();
+      expect(add4).toBeInTheDocument();
+      expect(listProducts).toBeInTheDocument();
+    })
   });
 
 
@@ -81,26 +84,43 @@ describe("Shop test", () => {
         </Provider>
       )
     })
-    const list = await waitFor(()=>screen.getByTestId('list-products'))
-    const addButton1 = screen.getByTestId("add1")
-    const addButton2 = screen.getByTestId("add2")
+    const list = await waitFor( ()=>screen.findByTestId('list-products'))
+    const addButton1 = await screen.findByTestId("add1")
+    const addButton2 = await screen.findByTestId("add2")
     expect(addButton1).toBeInTheDocument();
     expect(addButton2).toBeInTheDocument();
     addButton1.click()
     addButton1.click()
     addButton2.click()
-    await waitFor(()=>{screen.getByTestId('cart-card1')})
-    await waitFor(()=>{screen.getByTestId('cart-card2')})
-    expect(screen.getByTestId("totalQuantity")).toHaveTextContent('3');
-    expect(screen.getByTestId("totalPrice")).toHaveTextContent('R$11200.00');
-    const cartCardRemove = await waitFor(()=>{screen.getByTestId('cart-card1')})
-    screen.getByTestId('cart-card-remove-one2').click()
-    await waitFor(()=>{screen.getByTestId('cart-card2')})
-    expect(screen.getByTestId("totalQuantity")).toHaveTextContent('2');
-    screen.getByTestId('cart-card-close1').click()
-    await waitFor(()=>{screen.getByTestId('cart-card1')})
-    expect(screen.getByTestId("totalQuantity")).toHaveTextContent('0');
-    expect(screen.getByTestId("totalPrice")).toHaveTextContent('R$0,00');
+
+
+    await waitFor(()=>{screen.findByTestId('cart-card1')})
+    await waitFor(()=>{screen.findByTestId('cart-card2')})
+
+    const totalQuantity1 = await screen.findByTestId("totalQuantity")
+    expect(totalQuantity1).toHaveTextContent('3');
+
+    const totalPrice = await screen.findByTestId("totalPrice")
+    expect(totalPrice).toHaveTextContent('R$11200.00');
+
+    const cartCardRemove = await waitFor(()=>{screen.findByTestId('cart-card1')})
+
+    const btnRemove = await screen.findByTestId('cart-card-remove-one2')
+    btnRemove.click()
+    await waitFor(()=>{screen.findByTestId('cart-card2')})
+
+    const totalQuantity2 = await screen.findByTestId("totalQuantity")
+    expect(totalQuantity2).toHaveTextContent('2');
+
+    const btnRemove2 = await screen.findByTestId('cart-card-close1')
+    btnRemove2.click()
+    await waitFor(()=>{screen.findByTestId('cart-card1')})
+
+    const totalQuantity3 = await screen.findByTestId("totalQuantity")
+    expect(totalQuantity3).toHaveTextContent('0');
+
+    const totalPrice2 = await screen.findByTestId("totalPrice")
+    expect(totalPrice2).toHaveTextContent('R$0,00');
   });
 
 

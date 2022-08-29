@@ -5,13 +5,12 @@ import { addProduct } from "../../store/cart-reducer";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { ICard } from "../../interfaces/index";
-import { act } from "@testing-library/react";
 
 const Card = ({ product }: ICard) => {
   const dispatch = useDispatch();
 
   return (
-    <CardContainer>
+    <CardContainer data-testid={"card"+product.id}>
       <figure>
         <figcaption>{product.name}</figcaption>
         <Image
